@@ -75,15 +75,10 @@ public class PlayerCollisions implements CollisionMap {
      */
     public void playerVersusGhost(Player player, Ghost ghost) {
         pointCalculator.collidedWithAGhost(player, ghost);
-        int playerLife = player.getLife();
-        if(playerLife - 1 == 0)
+        player.decreaseLife();
+        if(!player.isAlive())
         {
-            player.setLife(0);
-            player.setAlive(false);
             player.setKiller(ghost);
-        }
-        else {
-            player.setLife(playerLife - 1);
         }
     }
 

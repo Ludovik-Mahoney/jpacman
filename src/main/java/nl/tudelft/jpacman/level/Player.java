@@ -93,6 +93,15 @@ public class Player extends Unit {
         this.life = number;
     }
 
+    public void decreaseLife() {
+        if (life > 0) {
+            life--;
+        }
+        else {
+            setAlive(false);
+        }
+    }
+
     /**
      *
      * @return
