@@ -10,7 +10,7 @@ import nl.tudelft.jpacman.board.Unit;
  */
 public class PlayerCollisions implements CollisionMap {
 
-    private final CollisionInteractionMap collisionInteractionMap;
+    private final CollisionMap collisionInteractionMap;
 
     /**
      * Creates a collision map that delegates to CollisionInteractionMap.
@@ -18,19 +18,11 @@ public class PlayerCollisions implements CollisionMap {
      * @param pointCalculator The point calculation strategy.
      */
     public PlayerCollisions(PointCalculator pointCalculator) {
-        this.collisionInteractionMap = new CollisionInteractionMap();
-        initializeCollisions(pointCalculator);
+        this.collisionInteractionMap = new DefaultPlayerInteractionMap(pointCalculator);
     }
 
-    /**
-     * Initializes all necessary collision handlers.
-     *
-     * @param pointCalculator The point calculation strategy.
-     */
-    private void initializeCollisions(PointCalculator pointCalculator) {
-        collisionInteractionMap.onCollision(Player.class, Ghost.class, new PlayerGhostCollisionHandler());
-        collisionInteractionMap.onCollision(Player.class, Pellet.class, new PlayerPelletCollisionHandler(pointCalculator));
-    }
+
+
 
     @Override
     public <C1 extends Unit, C2 extends Unit> void collide(C1 collider, C2 collidee) {
