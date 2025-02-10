@@ -97,7 +97,8 @@ public class Player extends Unit {
         if (life > 0) {
             life--;
         }
-        else {
+        //vérification de la vie après avoir décrémenter pour ettre à jour son état
+        if(life == 0) {
             setAlive(false);
         }
     }
