@@ -43,6 +43,8 @@ public class Player extends Unit {
      */
     private Unit killer;
 
+    private static final int INITIAL_LIFE = 3;
+
     /**
      * Creates a new player with a score of 0 points.
      *
@@ -52,7 +54,7 @@ public class Player extends Unit {
      *            The sprite to be shown when this player dies.
      */
     protected Player(Map<Direction, Sprite> spriteMap, AnimatedSprite deathAnimation) {
-        this.life = 3;
+        this.life = INITIAL_LIFE;
         this.score = 0;
         this.alive = true;
         this.sprites = spriteMap;
